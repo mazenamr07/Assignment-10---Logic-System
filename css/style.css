@@ -60,6 +60,13 @@ input:focus {
   outline-color: rgb(123, 178, 187);
 }
 
+/* Error Message */
+span#errMSG {
+  font-family: var(--open-sans);
+  font-size: 15px;
+  color: rgba(255, 59, 59, 0.85);
+}
+
 /* Button */
 button {
   font-family: var(--open-sans);

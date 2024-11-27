@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
-    <title>Document</title>
+    <title>Smart Login</title>
 
     <!-- ---------------------------- Bootstrap CSS ---------------------------- -->
     <link
@@ -16,6 +16,19 @@
     />
 
     <!-- ---------------------------- Google Fonts ----------------------------- -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=PT+Sans+Caption:wght@400;700&family=Righteous&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=PT+Sans+Caption:wght@400;700&family=Righteous&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- ---------------------------- Font Awesome ----------------------------- -->
     <link
@@ -31,10 +44,47 @@
     <link rel="stylesheet" href="css/mediaQ.css" />
   </head>
 
-  <body data-bs-spy="scroll" data-bs-target="#navbar-example">
+  <body>
     <!-- ----------------------------------------------------------------------- -->
-    <!--                                 Header                                  -->
+    <!--                                  Main                                   -->
     <!-- ----------------------------------------------------------------------- -->
+    <div class="container shadow rounded-1 mt-5 p-5">
+      <div class="row">
+        <div class="col-12">
+          <header class="w-100 text-capitalize text-center pb-4">
+            smart login system
+          </header>
+
+          <input
+            type="text"
+            placeholder="Enter your name"
+            class="w-100 rounded-1 mb-3 p-2 ps-3"
+          />
+          <input
+            type="text"
+            placeholder="Enter your email"
+            class="w-100 rounded-1 mb-3 p-2 ps-3"
+          />
+          <input
+            type="text"
+            placeholder="Enter your password"
+            class="w-100 rounded-1 mb-3 p-2 ps-3"
+          />
+             
+          <!-- Error Message -->
+          <span id="errMSG" class="d-none w-100 text-center mb-3">All inputs is required</span>
+
+          <button class="w-100 rounded-1 text-capitalize my-3 py-2">
+            sign up
+          </button>
+        </div>
+
+        <div class="text-center no-account text-capitalize">
+          <span>already have an account?</span>
+          <a href="index.html">sign in</a>
+        </div>
+      </div>
+    </div>
 
     <!-- ---------------------------- Bootstrap JS ----------------------------- -->
     <script
