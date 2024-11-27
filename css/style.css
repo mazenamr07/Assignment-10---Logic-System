@@ -64,7 +64,7 @@ input:focus {
 span#errMSG {
   font-family: var(--open-sans);
   font-size: 15px;
-  color: rgba(255, 59, 59, 0.85);
+  color: rgba(255, 93, 93, 0.85);
 }
 
 /* Button */
