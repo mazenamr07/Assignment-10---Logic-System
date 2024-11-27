@@ -1,0 +1,79 @@
+/* -------------------------------------------------------------------------- */
+/*                                Global Style                                */
+/* -------------------------------------------------------------------------- */
+a {
+  text-decoration: none;
+}
+
+body {
+  background-color: var(--main-color);
+}
+
+/* -------------------------------- Variables ------------------------------- */
+:root {
+  /* Fonts */
+  --merriweather: "Merriweather", serif;
+  --open-sans: "Open Sans", sans-serif;
+
+  /* Colors */
+  --main-color: rgb(36, 53, 63);
+  --secondary-color: rgb(23, 162, 184);
+  --third-color: rgba(255, 255, 255, 0.75);
+
+  /* Bootstrap */
+  --bs-box-shadow: 0rem 0rem 3rem rgb(0, 0, 0, 0.6);
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                    Main                                    */
+/* -------------------------------------------------------------------------- */
+.container {
+  width: 350px;
+  background-color: var(--main-color);
+}
+
+/* Header */
+header {
+  font-family: var(--noto-sans);
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 48px;
+  color: var(--secondary-color);
+}
+
+/* Input */
+input {
+  font-family: var(--open-sans);
+  background-color: var(--main-color);
+  outline: var(--third-color) 1px solid;
+  color: var(--third-color);
+  caret-color: var(--third-color);
+  border: 0;
+
+  transition: all 200ms ease-out;
+}
+input::placeholder {
+  color: var(--third-color);
+  opacity: 0.8;
+}
+input:focus {
+  outline-color: rgb(123, 178, 187);
+}
+
+/* Button */
+button {
+  font-family: var(--open-sans);
+  background-color: var(--main-color);
+  border: var(--secondary-color) 1px solid;
+  outline: transparent 3px solid;
+  color: var(--secondary-color);
+
+  transition: all 200ms ease-out;
+}
+button:hover {
+  background-color: var(--secondary-color);
+  color: white;
+}
+button:focus:not(:focus-visible) {
+  outline: rgb(30, 107, 123) 3px solid;
+}
