@@ -77,3 +77,15 @@ button:hover {
 button:focus:not(:focus-visible) {
   outline: rgb(30, 107, 123) 3px solid;
 }
+
+/* Create an Account */
+.no-account {
+  color: var(--third-color);
+}
+
+.no-account a {
+  color: var(--third-color);
+}
+.no-account a:hover {
+  text-decoration: underline;
+}
