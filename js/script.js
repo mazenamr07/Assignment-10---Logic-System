@@ -1,1 +1,0 @@
-var errMSG = document.getElementById("errMSg");

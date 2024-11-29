@@ -7,11 +7,6 @@ var inputs = document.querySelectorAll(".input input");
 var inputContainers = document.querySelectorAll(".input");
 
 /* ---------------------------------- Logic --------------------------------- */
-// Initialize Local Storage
-if (localStorage.getItem("users") === null) {
-  localStorage.setItem("users", JSON.stringify([]));
-}
-
 // Input Styling
 for (let i = 0; i < inputs.length; i++) {
   inputs[i].addEventListener("focus", function () {
@@ -26,8 +21,8 @@ for (let i = 0; i < inputs.length; i++) {
 var emailValid = false;
 var email = "";
 
-inputs[1].addEventListener("blur", function () {
-  email = inputs[1].value.toLowerCase();
+inputs[0].addEventListener("blur", function () {
+  email = inputs[0].value.toLowerCase();
 
   if (!checkMail(email)) {
     errMSG.innerHTML = "email can't be in this format";
@@ -42,30 +37,37 @@ inputs[1].addEventListener("blur", function () {
 });
 
 // Button Press Validation
+var userName = "";
+
 button.addEventListener("click", function () {
   if (fieldsEmpty(inputs)) {
     errMSG.innerHTML = "you must enter all fields";
-    errMSG.classList.replace("d-none", "d-block");
-  } else if (userExists(email)) {
-    errMSG.innerHTML = "user already exists";
     errMSG.classList.replace("d-none", "d-block");
   } else if (!emailValid) {
     errMSG.innerHTML = "email can't be in this format";
     errMSG.classList.replace("d-none", "d-block");
   } else {
     var user = {
-      name: inputs[0].value.toLowerCase(),
-      email: inputs[1].value.toLowerCase(),
-      password: inputs[2].value,
+      email: inputs[0].value.toLowerCase(),
+      password: inputs[1].value,
     };
 
-    var localData = localStorage.getItem("users");
-    var localJSON = JSON.parse(localData);
-    localJSON.push(user);
-    localStorage.setItem("users", JSON.stringify(localJSON));
+    if (isValidUser(user) === true) {
+      // Login
+      localStorage.setItem(
+        "authorizedUser",
+        JSON.stringify({
+          name: userName,
+          email: user.email,
+        })
+      );
 
-    // Redirect Page
-    window.location.replace("log_in.html");
+      // Redirect Page
+      window.location.replace("index.html");
+    } else {
+      errMSG.innerHTML = isValidUser(user);
+      errMSG.classList.replace("d-none", "d-block");
+    }
   }
 });
 
@@ -83,12 +85,16 @@ function checkMail(string) {
   return emailRegex.test(string);
 }
 
-function userExists(userEmail) {
+function isValidUser(user) {
   var users = JSON.parse(localStorage.getItem("users"));
   for (let i = 0; i < users.length; i++) {
-    if (userEmail == users[i].email) {
-      return true;
+    if (user.email == users[i].email) {
+      if (user.password == users[i].password) {
+        userName = users[i].name;
+        return true;
+      }
+      return "incorrect email or password";
     }
   }
-  return false;
+  return "user doesn't exist";
 }

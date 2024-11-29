@@ -36,7 +36,7 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
 
-  <body id="sign-up" class="d-flex align-items-center justify-content-center">
+  <body class="d-flex align-items-center justify-content-center">
     <!-- ----------------------------------------------------------------------- -->
     <!--                                  Main                                   -->
     <!-- ----------------------------------------------------------------------- -->
@@ -62,10 +62,6 @@
         <div>
           <div class="input pb-2 my-5">
             <i class="fa-solid fa-user-alt me-1"></i>
-            <input type="text" placeholder="Name" class="" />
-          </div>
-          <div class="input pb-2 mb-5">
-            <i class="fa-solid fa-envelope me-1"></i>
             <input type="email" placeholder="Email" class="" />
           </div>
           <div class="input pb-2">
@@ -79,21 +75,20 @@
           id="errMSG"
           class="d-none position-absolute text-capitalize mt-2 ms-1"
         >
-          incorrect email or password
         </span>
 
         <!-- Button -->
         <button
           class="m-auto btn rounded-pill bg-white my-5 py-3 px-4 d-flex justify-content-between align-items-center"
         >
-          <span class="text-uppercase">sign up</span>
+          <span class="text-uppercase">Log in</span>
           <i class="fa-solid fa-angle-right fa-2x"></i>
         </button>
 
         <!-- Account Notification -->
         <div class="text-center account-notification text-capitalize">
-          <span>already have an account?</span>
-          <a href="index.html" class="ms-1">log in</a>
+          <span>don't have an account?</span>
+          <a href="sign_up.html" class="ms-1">sign up</a>
         </div>
       </div>
     </div>
@@ -106,6 +101,6 @@
     ></script>
 
     <!-- ------------------------------- MY JS -------------------------------- -->
-    <script src="js/script_sign_up.js"></script>
+    <script src="js/script_log_in.js"></script>
   </body>
 </html>
