@@ -42,6 +42,9 @@ body {
     rgb(124, 127, 183)
   );
 }
+#sign-up .container {
+  height: 600px;
+}
 
 /* ---------------------------------- Cover --------------------------------- */
 .container .cover {
@@ -50,6 +53,10 @@ body {
   left: 55%;
   width: 200px;
   transform: scale(3) rotate(45deg);
+}
+#sign-up .container .cover {
+  top: 0%;
+  transform: scale(3.3) rotate(45deg);
 }
 
 .container .cover > .row div {
@@ -85,11 +92,20 @@ header {
   line-height: 48px;
   color: transparent;
   background-image: linear-gradient(
-    90deg,
+    45deg,
+    var(--secondary-color) 69.1%,
+    white 69.1% /* 90deg,
     var(--secondary-color) 70%,
-    white 80%
+    white 80% */
   );
   background-clip: text;
+}
+#sign-up header {
+  background-image: linear-gradient(
+    45deg,
+    var(--secondary-color) 48%,
+    white 48%
+  );
 }
 
 /* ---------------------------------- Input --------------------------------- */
@@ -173,11 +189,21 @@ button.btn:hover,
 .account-notification span {
   color: transparent;
   background-image: linear-gradient(
-    90deg,
+    315deg,
+    white 91%,
+    var(--secondary-color) 91%
+    /* 90deg,
     var(--secondary-color) 1%,
-    white 10%
+    white 10% */
   );
   background-clip: text;
+}
+#sign-up .account-notification span {
+  background-image: linear-gradient(
+    315deg,
+    white 90%,
+    var(--secondary-color) 90%
+  );
 }
 
 .account-notification a {

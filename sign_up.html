@@ -19,14 +19,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=PT+Sans+Caption:wght@400;700&family=Righteous&display=swap"
-      rel="stylesheet"
-    />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=PT+Sans+Caption:wght@400;700&family=Righteous&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=PT+Sans+Caption:wght@400;700&family=Righteous&display=swap"
       rel="stylesheet"
     />
 
@@ -41,47 +34,66 @@
 
     <!-- ------------------------------- MY CSS -------------------------------- -->
     <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/mediaQ.css" />
   </head>
 
-  <body>
+  <body id="sign-up" class="d-flex align-items-center justify-content-center">
     <!-- ----------------------------------------------------------------------- -->
     <!--                                  Main                                   -->
     <!-- ----------------------------------------------------------------------- -->
-    <div class="container shadow rounded-1 mt-5 p-5">
-      <div class="row">
-        <div class="col-12">
-          <header class="w-100 text-capitalize text-center pb-4">
-            smart login system
-          </header>
+    <div class="container overflow-hidden shadow rounded-1 p-5">
+      <!-- Cover -->
+      <div class="cover">
+        <div class="row align-items-end">
+          <div class="col-5 purple rounded-4"></div>
+          <div class="col-3 purple rounded-4"></div>
+          <div class="col-7 white rounded-4"></div>
+          <div class="col-3 light-purple rounded-4 offset-1"></div>
+        </div>
+      </div>
 
-          <input
-            type="text"
-            placeholder="Enter your name"
-            class="w-100 rounded-1 mb-3 p-2 ps-3"
-          />
-          <input
-            type="email"
-            placeholder="Enter your email"
-            class="w-100 rounded-1 mb-3 p-2 ps-3"
-          />
-          <input
-            type="password"
-            placeholder="Enter your password"
-            class="w-100 rounded-1 mb-3 p-2 ps-3"
-          />
-             
-          <!-- Error Message -->
-          <span id="errMSG" class="d-none w-100 text-center mb-3"></span>
+      <!-- Header -->
+      <header class="text-center text-capitalize position-relative z-3">
+        Smart Login System
+      </header>
 
-          <button class="w-100 rounded-1 text-capitalize my-3 py-2">
-            sign up
-          </button>
+      <!-- Page -->
+      <div class="position-relative z-3">
+        <!-- Form -->
+        <div>
+          <div class="input pb-2 my-5">
+            <i class="fa-solid fa-user-alt me-1"></i>
+            <input type="text" placeholder="Name" class="" />
+          </div>
+          <div class="input pb-2 mb-5">
+            <i class="fa-solid fa-envelope me-1"></i>
+            <input type="email" placeholder="Email" class="" />
+          </div>
+          <div class="input pb-2">
+            <i class="fa-solid fa-lock me-1"></i>
+            <input type="password" placeholder="Password" class="" />
+          </div>
         </div>
 
-        <div class="text-center no-account text-capitalize">
+        <!-- Error Message -->
+        <span
+          id="errMSG"
+          class="d-block position-absolute text-capitalize mt-2 ms-1"
+        >
+          incorrect email or password
+        </span>
+
+        <!-- Button -->
+        <button
+          class="m-auto btn rounded-pill bg-white my-5 py-3 px-4 d-flex justify-content-between align-items-center"
+        >
+          <span class="text-uppercase">sign up</span>
+          <i class="fa-solid fa-angle-right fa-2x"></i>
+        </button>
+
+        <!-- Account Notification -->
+        <div class="text-center account-notification text-capitalize">
           <span>already have an account?</span>
-          <a href="index.html">sign in</a>
+          <a href="index.html" class="ms-1">log in</a>
         </div>
       </div>
     </div>
@@ -94,6 +106,6 @@
     ></script>
 
     <!-- ------------------------------- MY JS -------------------------------- -->
-    <script src="js/script_sign_up.js"></script>
+    <script src="js/script.js"></script>
   </body>
 </html>
