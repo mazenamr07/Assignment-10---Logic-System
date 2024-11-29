@@ -1,8 +1,8 @@
 /* -------------------------------- Variables ------------------------------- */
-const regex = /^\w+@\w+\.\w+$/i;
+const emailRegex = /^\w+@\w+\.\w+$/i;
 
 var button = document.querySelector("button");
-var errMSG = document.getElementById("errMSG");
+var errMSG = document.querySelector("#errMSG");
 var inputs = document.querySelectorAll(".input input");
 var inputContainers = document.querySelectorAll(".input");
 
@@ -28,7 +28,7 @@ function fieldsEmpty(array) {
 }
 
 function checkMail(string) {
-  return regex.test(string);
+  return emailRegex.test(string);
 }
 
 function userExists(userEmail) {

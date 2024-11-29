@@ -1,35 +1,71 @@
-/* -------------------------------- Variables ------------------------------- */
-const regex = /^\w+@\w+\.\w+$/i;
+/* ---------------------------- Global Variables ---------------------------- */
+const emailRegex = /^\w+@\w+\.\w+$/i;
 
 var button = document.querySelector("button");
-var errMSG = document.getElementById("errMSG");
+var errMSG = document.querySelector("#errMSG");
+var inputs = document.querySelectorAll(".input input");
+var inputContainers = document.querySelectorAll(".input");
 
 /* ---------------------------------- Logic --------------------------------- */
-button.addEventListener("click", function () {
-  var inputList = [
-    document.querySelector("input:nth-of-type(1)"), // Name
-    document.querySelector("input:nth-of-type(2)"), // Email
-    document.querySelector("input:nth-of-type(3)"), // Password
-  ];
-  var user = {
-    name: inputList[0].value,
-    email: inputList[1].value,
-    password: inputList[2].value,
-  };
-  errMSG.classList.replace("d-none", "d-block");
+// Initialize Local Storage
+if (localStorage.getItem("users") === null) {
+  localStorage.setItem("users", JSON.stringify([]));
+}
 
-  if (fieldsEmpty(inputList)) {
-    errMSG.innerHTML = "All inputs are required";
-  } else if (!checkMail(user.email)) {
-    errMSG.innerHTML = "Email cannot be in this format";
-  } else if (userExists(user.email)) {
-    errMSG.innerHTML = "Email already exists";
+// Input Styling
+for (let i = 0; i < inputs.length; i++) {
+  inputs[i].addEventListener("focus", function () {
+    inputContainers[i].classList.add("focused");
+  });
+  inputs[i].addEventListener("blur", function () {
+    inputContainers[i].classList.remove("focused");
+  });
+}
+
+// Email Validation
+var emailValid = false;
+var email = "";
+
+inputs[1].addEventListener("blur", function () {
+  email = inputs[1].value;
+
+  if (!checkMail(email)) {
+    errMSG.innerHTML = "email can't be in this format";
+    errMSG.classList.replace("d-none", "d-block");
+    emailValid = false;
   } else {
-    var userJSON = JSON.stringify(user);
-    localStorage.setItem(user.email, userJSON);
+    if (errMSG.classList.contains("d-block")) {
+      errMSG.classList.replace("d-block", "d-none");
+    }
+    emailValid = true;
+  }
+});
 
-    // redirect page
-    window.location.href = "index.html";
+// Button Press Validation
+button.addEventListener("click", function () {
+  if (fieldsEmpty(inputs)) {
+    errMSG.innerHTML = "you must enter all fields";
+    errMSG.classList.replace("d-none", "d-block");
+  } else if (userExists(email)) {
+    errMSG.innerHTML = "user already exists";
+    errMSG.classList.replace("d-none", "d-block");
+  } else if (!emailValid) {
+    errMSG.innerHTML = "email can't be in this format";
+    errMSG.classList.replace("d-none", "d-block");
+  } else {
+    var user = {
+      name: inputs[0].value,
+      email: inputs[1].value,
+      password: inputs[2].value,
+    };
+
+    var localData = localStorage.getItem("users");
+    var localJSON = JSON.parse(localData);
+    localJSON.push(user);
+    localStorage.setItem("users", JSON.stringify(localJSON));
+
+    // Redirect Page
+    window.location.replace("index.html")
   }
 });
 
@@ -44,12 +80,15 @@ function fieldsEmpty(array) {
 }
 
 function checkMail(string) {
-  return regex.test(string);
+  return emailRegex.test(string);
 }
 
 function userExists(userEmail) {
-  if (localStorage.getItem(userEmail) == null) {
-    return false;
+  var users = JSON.parse(localStorage.getItem("users"));
+  for (let i = 0; i < users.length; i++) {
+    if (userEmail == users[i].email) {
+      return true;
+    }
   }
-  return true;
+  return false;
 }
