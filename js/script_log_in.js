@@ -22,7 +22,7 @@ var emailValid = false;
 var email = "";
 
 inputs[0].addEventListener("blur", function () {
-  email = inputs[0].value;
+  email = inputs[0].value.toLowerCase();
 
   if (!checkMail(email)) {
     errMSG.innerHTML = "email can't be in this format";
@@ -37,6 +37,8 @@ inputs[0].addEventListener("blur", function () {
 });
 
 // Button Press Validation
+var userName = "";
+
 button.addEventListener("click", function () {
   if (fieldsEmpty(inputs)) {
     errMSG.innerHTML = "you must enter all fields";
@@ -46,15 +48,22 @@ button.addEventListener("click", function () {
     errMSG.classList.replace("d-none", "d-block");
   } else {
     var user = {
-      email: inputs[0].value,
+      email: inputs[0].value.toLowerCase(),
       password: inputs[1].value,
     };
 
     if (isValidUser(user) === true) {
       // Login
+      localStorage.setItem(
+        "authorizedUser",
+        JSON.stringify({
+          name: userName,
+          email: user.email,
+        })
+      );
 
       // Redirect Page
-      // window.location.replace("index.html");
+      window.location.replace("index.html");
     } else {
       errMSG.innerHTML = isValidUser(user);
       errMSG.classList.replace("d-none", "d-block");
@@ -81,6 +90,7 @@ function isValidUser(user) {
   for (let i = 0; i < users.length; i++) {
     if (user.email == users[i].email) {
       if (user.password == users[i].password) {
+        userName = users[i].name;
         return true;
       }
       return "incorrect email or password";

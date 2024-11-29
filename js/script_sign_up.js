@@ -27,7 +27,7 @@ var emailValid = false;
 var email = "";
 
 inputs[1].addEventListener("blur", function () {
-  email = inputs[1].value;
+  email = inputs[1].value.toLowerCase();
 
   if (!checkMail(email)) {
     errMSG.innerHTML = "email can't be in this format";
@@ -54,8 +54,8 @@ button.addEventListener("click", function () {
     errMSG.classList.replace("d-none", "d-block");
   } else {
     var user = {
-      name: inputs[0].value,
-      email: inputs[1].value,
+      name: inputs[0].value.toLowerCase(),
+      email: inputs[1].value.toLowerCase(),
       password: inputs[2].value,
     };
 
@@ -65,7 +65,7 @@ button.addEventListener("click", function () {
     localStorage.setItem("users", JSON.stringify(localJSON));
 
     // Redirect Page
-    window.location.replace("index.html")
+    window.location.replace("log_in.html");
   }
 });
 

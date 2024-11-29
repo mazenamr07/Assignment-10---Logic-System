@@ -36,32 +36,61 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
 
-  <body id="home-page">
+  <body class="d-flex align-items-center justify-content-center">
     <!-- ----------------------------------------------------------------------- -->
-    <!--                                 Header                                  -->
+    <!--                                  Main                                   -->
     <!-- ----------------------------------------------------------------------- -->
-    <div id="home-cover" class="d-block"></div>
-
-    <!-- Main Page -->
-    <div class="container shadow rounded-4 mx-auto p-4">
-      <div class="inner d-flex align-items-center justify-content-between">
-        <header class="text-center text-capitalize position-relative z-3">
-          <i class="fa-solid fa-user-alt"></i>
-          Welcome, Mazen
-        </header>
-
-        <button
-          class="btn rounded-pill bg-white py-3 px-4 d-flex justify-content-between align-items-center"
-        >
-          <span class="text-uppercase">Log out</span>
-          <i class="fa-solid fa-sign-out fa-2x"></i>
-        </button>
+    <div class="container overflow-hidden shadow rounded-1 p-5">
+      <!-- Cover -->
+      <div class="cover">
+        <div class="row align-items-end">
+          <div class="col-5 purple rounded-4"></div>
+          <div class="col-3 purple rounded-4"></div>
+          <div class="col-7 white rounded-4"></div>
+          <div class="col-3 light-purple rounded-4 offset-1"></div>
+        </div>
       </div>
-      <img
-        src="images/Cool-cat-meme-2.webp"
-        alt="Cool-cat-meme"
-        class="d-block mx-auto mt-3"
-      />
+
+      <!-- Header -->
+      <header class="text-center text-capitalize position-relative z-3">
+        Smart Login System
+      </header>
+
+      <!-- Page -->
+      <div class="position-relative z-3">
+        <!-- Form -->
+        <div>
+          <div class="input pb-2 my-5">
+            <i class="fa-solid fa-user-alt me-1"></i>
+            <input type="email" placeholder="Email" class="" />
+          </div>
+          <div class="input pb-2">
+            <i class="fa-solid fa-lock me-1"></i>
+            <input type="password" placeholder="Password" class="" />
+          </div>
+        </div>
+
+        <!-- Error Message -->
+        <span
+          id="errMSG"
+          class="d-none position-absolute text-capitalize mt-2 ms-1"
+        >
+        </span>
+
+        <!-- Button -->
+        <button
+          class="m-auto btn rounded-pill bg-white my-5 py-3 px-4 d-flex justify-content-between align-items-center"
+        >
+          <span class="text-uppercase">Log in</span>
+          <i class="fa-solid fa-angle-right fa-2x"></i>
+        </button>
+
+        <!-- Account Notification -->
+        <div class="text-center account-notification text-capitalize">
+          <span>don't have an account?</span>
+          <a href="sign_up.html" class="ms-1">sign up</a>
+        </div>
+      </div>
     </div>
 
     <!-- ---------------------------- Bootstrap JS ----------------------------- -->
@@ -72,6 +101,6 @@
     ></script>
 
     <!-- ------------------------------- MY JS -------------------------------- -->
-    <script src="js/script_home_page.js"></script>
+    <script src="js/script_log_in.js"></script>
   </body>
 </html>
