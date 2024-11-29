@@ -140,14 +140,20 @@ header {
   );
 }
 #home-page header {
-  background-image: linear-gradient(
-    45deg,
-    var(--secondary-color) 10%,
-    white 10%
-  );
-
+  color: white;
+  background-image: none;
   left: 50%;
   transform: translateX(-50%);
+}
+
+#home-page header i {
+  color: transparent;
+  background-image: linear-gradient(
+    45deg,
+    var(--secondary-color) 41%,
+    white 41%
+  );
+  background-clip: text;
 }
 
 /* ---------------------------------- Input --------------------------------- */
