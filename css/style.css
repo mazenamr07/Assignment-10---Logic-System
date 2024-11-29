@@ -1,6 +1,12 @@
 /* -------------------------------------------------------------------------- */
 /*                                Global Style                                */
 /* -------------------------------------------------------------------------- */
+*:not(input)::selection {
+  color: rgb(64, 61, 124);
+  color: white;
+  background-color: rgb(112, 148, 223);
+}
+
 a {
   text-decoration: none;
 }
@@ -13,15 +19,14 @@ body {
 /* -------------------------------- Variables ------------------------------- */
 :root {
   /* Fonts */
-  --merriweather: "Merriweather", serif;
-  --open-sans: "Open Sans", sans-serif;
+  --lato: "Lato", sans-serif;
 
   /* Colors */
   --main-color: rgb(119, 119, 180);
   --secondary-color: rgb(93, 89, 162);
 
   /* Bootstrap */
-  --bs-box-shadow: 0rem 0rem 3rem rgb(0, 0, 0, 0.6);
+  --bs-box-shadow: 0rem 0rem 2.5rem rgb(0, 0, 0, 0.5);
 }
 
 /* -------------------------------------------------------------------------- */
@@ -31,10 +36,14 @@ body {
   position: relative;
   width: 400px;
   height: 500px;
-  background-image: linear-gradient(45deg, var(--secondary-color) -10%, rgb(124, 127, 183));
+  background-image: linear-gradient(
+    45deg,
+    var(--secondary-color) -10%,
+    rgb(124, 127, 183)
+  );
 }
 
-/* Cover */
+/* ---------------------------------- Cover --------------------------------- */
 .container .cover {
   position: absolute;
   top: -15%;
@@ -57,7 +66,7 @@ body {
   z-index: 1;
 }
 .container .cover > .row div.purple:nth-of-type(2) {
-  transform: translate(6px ,50%);
+  transform: translate(6px, 50%);
 }
 
 .container .cover > .row div.light-purple {
@@ -65,26 +74,58 @@ body {
   width: 70px;
   background-color: rgb(125, 125, 184);
 
-  transform: translate(12px ,-20%);
+  transform: translate(12px, -20%);
 }
 
-/* Header */
+/* --------------------------------- Header --------------------------------- */
 header {
-  font-family: var(--noto-sans);
-  font-size: 40px;
+  font-family: var(--lato);
+  font-size: 32px;
   font-weight: 600;
   line-height: 48px;
-  color: var(--secondary-color);
+  color: transparent;
+  background-image: linear-gradient(
+    90deg,
+    var(--secondary-color) 70%,
+    white 80%
+  );
+  background-clip: text;
 }
 
-/* Input */
-input {
-  font-family: var(--open-sans);
-  background-color: var(--main-color);
-  outline: var(--third-color) 1px solid;
-  color: var(--third-color);
-  caret-color: var(--third-color);
+/* ---------------------------------- Input --------------------------------- */
+.input {
+  display: inline-block;
+  color: var(--main-color);
+  background-color: transparent;
+  position: relative;
+}
+.input::after {
+  content: "";
+  width: 105%;
+  height: 1px;
+  background-color: rgb(210, 210, 210);
+
+  position: absolute;
+  bottom: 0;
+  left: 1%;
+
+  transition: all ease-out 250ms;
+}
+.input:hover::after,
+.input.focused::after {
+  background-color: black;
+}
+
+.input input {
+  font-family: var(--lato);
+  font-size: 0.9rem;
+  font-weight: 600;
+  opacity: 0.7;
+  width: 180px;
+
+  background-color: inherit;
   border: 0;
+  outline: 0;
 
   transition: all 200ms ease-out;
 }
@@ -96,39 +137,52 @@ input:focus {
   outline-color: rgb(123, 178, 187);
 }
 
-/* Error Message */
+/* ------------------------------ Error Message ----------------------------- */
 span#errMSG {
-  font-family: var(--open-sans);
+  font-family: var(--lato);
   font-size: 15px;
   color: rgba(255, 93, 93, 0.85);
 }
 
-/* Button */
-button {
-  font-family: var(--open-sans);
-  background-color: var(--main-color);
-  border: var(--secondary-color) 1px solid;
-  outline: transparent 3px solid;
-  color: var(--secondary-color);
+/* --------------------------------- Button --------------------------------- */
+button.btn {
+  width: 90%;
+  font-family: var(--lato);
+  font-weight: 700;
+  color: var(--main-color);
+
+  border: 0.5px var(--main-color) solid;
+  border-bottom-width: 2.5px;
+  outline: 1px transparent solid;
+  box-shadow: 5px 5px 10px var(--secondary-color);
 
   transition: all 200ms ease-out;
 }
-button:hover {
-  background-color: var(--secondary-color);
+button.btn:hover,
+:not(.btn-check) + .btn:active {
+  color: var(--main-color);
+  border-color: var(--main-color);
+  outline: 1px var(--main-color) solid;
+}
+
+/* -------------------------- Account Notification -------------------------- */
+.account-notification {
+  font-family: var(--lato);
+}
+
+.account-notification span {
+  color: transparent;
+  background-image: linear-gradient(
+    90deg,
+    var(--secondary-color) 1%,
+    white 10%
+  );
+  background-clip: text;
+}
+
+.account-notification a {
   color: white;
 }
-button:focus:not(:focus-visible) {
-  outline: rgb(30, 107, 123) 3px solid;
-}
-
-/* Create an Account */
-.no-account {
-  color: var(--third-color);
-}
-
-.no-account a {
-  color: var(--third-color);
-}
-.no-account a:hover {
+.account-notification a:hover {
   text-decoration: underline;
 }

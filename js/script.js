@@ -3,33 +3,19 @@ const regex = /^\w+@\w+\.\w+$/i;
 
 var button = document.querySelector("button");
 var errMSG = document.getElementById("errMSG");
+var inputs = document.querySelectorAll(".input input");
+var inputContainers = document.querySelectorAll(".input");
 
 /* ---------------------------------- Logic --------------------------------- */
-button.addEventListener("click", function () {
-  var inputList = [
-    document.querySelector("input:nth-of-type(1)"), // Email
-    document.querySelector("input:nth-of-type(2)"), // Password
-  ];
-  var user = {
-    email: inputList[0].value,
-    password: inputList[1].value,
-  };
-  errMSG.classList.replace("d-none", "d-block");
-
-  if (fieldsEmpty(inputList)) {
-    errMSG.innerHTML = "All inputs are required";
-  } else if (!checkMail(user.email)) {
-    errMSG.innerHTML = "Email cannot be in this format";
-  } else if (!userExists(user.email)) {
-    errMSG.innerHTML = "Email doesn't exist";
-  } else {
-    var userJSON = JSON.stringify(user);
-    localStorage.setItem(user.email, userJSON);
-
-    // redirect page
-    window.location.href = "index.html";
-  }
-});
+// Input Styling
+for (let i = 0; i < inputs.length; i++) {
+  inputs[i].addEventListener("focus", function () {
+    inputContainers[i].classList.add("focused");
+  });
+  inputs[i].addEventListener("blur", function () {
+    inputContainers[i].classList.remove("focused");
+  });
+}
 
 /* -------------------------------- Functions ------------------------------- */
 function fieldsEmpty(array) {
