@@ -6,7 +6,8 @@ a {
 }
 
 body {
-  background-color: var(--main-color);
+  background-image: linear-gradient(90deg, white -50%, var(--main-color));
+  min-height: 100vh;
 }
 
 /* -------------------------------- Variables ------------------------------- */
@@ -16,9 +17,8 @@ body {
   --open-sans: "Open Sans", sans-serif;
 
   /* Colors */
-  --main-color: rgb(36, 53, 63);
-  --secondary-color: rgb(23, 162, 184);
-  --third-color: rgba(255, 255, 255, 0.75);
+  --main-color: rgb(119, 119, 180);
+  --secondary-color: rgb(93, 89, 162);
 
   /* Bootstrap */
   --bs-box-shadow: 0rem 0rem 3rem rgb(0, 0, 0, 0.6);
@@ -28,8 +28,44 @@ body {
 /*                                    Main                                    */
 /* -------------------------------------------------------------------------- */
 .container {
-  width: 350px;
-  background-color: var(--main-color);
+  position: relative;
+  width: 400px;
+  height: 500px;
+  background-image: linear-gradient(45deg, var(--secondary-color) -10%, rgb(124, 127, 183));
+}
+
+/* Cover */
+.container .cover {
+  position: absolute;
+  top: -15%;
+  left: 55%;
+  width: 200px;
+  transform: scale(3) rotate(45deg);
+}
+
+.container .cover > .row div {
+  height: 200px;
+}
+.container .cover > .row div.white {
+  background-color: white;
+  position: relative;
+  z-index: 2;
+}
+.container .cover > .row div.purple {
+  background-color: var(--secondary-color);
+  position: relative;
+  z-index: 1;
+}
+.container .cover > .row div.purple:nth-of-type(2) {
+  transform: translate(6px ,50%);
+}
+
+.container .cover > .row div.light-purple {
+  height: 130px;
+  width: 70px;
+  background-color: rgb(125, 125, 184);
+
+  transform: translate(12px ,-20%);
 }
 
 /* Header */
