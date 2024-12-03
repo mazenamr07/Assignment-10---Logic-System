@@ -7,10 +7,6 @@ var inputs = document.querySelectorAll(".input input");
 var inputContainers = document.querySelectorAll(".input");
 
 /* ---------------------------------- Logic --------------------------------- */
-// Initialize Local Storage
-if (localStorage.getItem("users") === null) {
-  localStorage.setItem("users", JSON.stringify([]));
-}
 
 // Input Styling
 for (let i = 0; i < inputs.length; i++) {
@@ -43,6 +39,11 @@ inputs[1].addEventListener("blur", function () {
 
 // Button Press Validation
 button.addEventListener("click", function () {
+  // Initialize Local Storage
+  if (localStorage.getItem("users") === null) {
+    localStorage.setItem("users", JSON.stringify([]));
+  }
+
   if (fieldsEmpty(inputs)) {
     errMSG.innerHTML = "you must enter all fields";
     errMSG.classList.replace("d-none", "d-block");

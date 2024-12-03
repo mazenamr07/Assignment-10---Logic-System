@@ -40,6 +40,11 @@ inputs[0].addEventListener("blur", function () {
 var userName = "";
 
 button.addEventListener("click", function () {
+  // Initialize Local Storage
+  if (localStorage.getItem("users") === null) {
+    localStorage.setItem("users", JSON.stringify([]));
+  }
+
   if (fieldsEmpty(inputs)) {
     errMSG.innerHTML = "you must enter all fields";
     errMSG.classList.replace("d-none", "d-block");
